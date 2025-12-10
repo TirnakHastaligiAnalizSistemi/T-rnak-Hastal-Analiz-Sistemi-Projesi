@@ -1,0 +1,1 @@
+Bu kodlar doğrultusunda %94 doğrulukla çalışan Türkiye'nin ilk, tırnak tırnak görüntülerinden hastalık tespiti ve olası sistemik hastalık risklerinin öngörülmesi amacıyla kullanılabilecek, klinik ön tanıya destek sağlayan sistemini geliştirdik.
