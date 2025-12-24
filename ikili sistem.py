@@ -60,7 +60,7 @@ disp = ConfusionMatrixDisplay(
     display_labels=disease_names
 )
 disp.plot(xticks_rotation=45)
-plt.title("Cascade Sistem – 5 Sınıf Confusion Matrix")
+plt.title("İkili Sistem – 5 Sınıf Karısıklılık Matrisi")
 plt.tight_layout()
 plt.show()
 
@@ -83,3 +83,4 @@ multiclass_model.save("multiclass_model_final.keras")
 with open("cascade_system.json", "w", encoding="utf-8") as f:
     json.dump(cascade_config, f, indent=4)
 print("Sistem ve modeller kaydedildi")
+
