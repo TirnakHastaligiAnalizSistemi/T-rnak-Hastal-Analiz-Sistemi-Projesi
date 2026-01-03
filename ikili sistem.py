@@ -26,7 +26,7 @@ data_gen = datagen.flow_from_directory(
 )
 
 class_names = list(data_gen.class_indices.keys())
-disease_names = class_names[1:]
+disease_names = [name for name in class_names if name != "healthy"]
 
 # İkili Sistem Modeli
 y_true = []
@@ -39,11 +39,9 @@ for i in range(len(data_gen)):
     harmful_prob = binary_probs[1]
     if harmful_prob < BINARY_THRESHOLD:
         continue
-
     multiclass_probs = multiclass_model.predict(img, verbose=0)[0]
-    multiclass_probs[0] = 0.0
+    multiclass_probs[0] = 0.0  # healthy skorunu sıfırla
     pred_class = np.argmax(multiclass_probs)
-
     if true_class != 0:
         y_true.append(true_class - 1)
         y_pred.append(pred_class - 1)
@@ -51,7 +49,7 @@ for i in range(len(data_gen)):
 print("İkili sistem tamamlandı")
 
 # Karışıklık Matrisi
-print("\nClassification Report (5 Hastalık):\n")
+print("\nİkili Sİstem Sınıflandırma Raporu:\n")
 print(classification_report(y_true, y_pred, target_names=disease_names))
 cm = confusion_matrix(y_true, y_pred)
 plt.figure(figsize=(8, 6))
@@ -60,15 +58,14 @@ disp = ConfusionMatrixDisplay(
     display_labels=disease_names
 )
 disp.plot(xticks_rotation=45)
-plt.title("İkili Sistem – 5 Sınıf Karısıklılık Matrisi")
+plt.title("İkili Sistem – 5 Sınıf Confusion Matrix")
 plt.tight_layout()
 plt.show()
-
 acc = accuracy_score(y_true, y_pred)
 print(f"İkili Sistem Dogrulugu: %{acc * 100:.2f}")
 
 # Sistemi kaydetme
-cascade_config = {
+ikilisistem_config = {
     "binary_model": "binary_model_final.keras",
     "multiclass_model": "multiclass_model_final.keras",
     "binary_threshold": BINARY_THRESHOLD,
@@ -79,9 +76,9 @@ cascade_config = {
 
 binary_model.save("binary_model_final.keras")
 multiclass_model.save("multiclass_model_final.keras")
-
-with open("cascade_system.json", "w", encoding="utf-8") as f:
-    json.dump(cascade_config, f, indent=4)
+with open("ikili_sistem.json", "w", encoding="utf-8") as f:
+    json.dump(ikilisistem_config, f, indent=4)
 print("Sistem ve modeller kaydedildi")
+
 
 
