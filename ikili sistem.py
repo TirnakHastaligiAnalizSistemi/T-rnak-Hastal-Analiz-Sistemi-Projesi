@@ -26,7 +26,7 @@ data_gen = datagen.flow_from_directory(
 )
 
 class_names = list(data_gen.class_indices.keys())
-disease_names = class_names[1:]  # healthy çıkarıldı
+disease_names = class_names[1:]
 
 # İkili Sistem Modeli
 y_true = []
@@ -83,4 +83,5 @@ multiclass_model.save("multiclass_model_final.keras")
 with open("cascade_system.json", "w", encoding="utf-8") as f:
     json.dump(cascade_config, f, indent=4)
 print("Sistem ve modeller kaydedildi")
+
 
