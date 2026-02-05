@@ -1,1 +1,1 @@
-Bu kodlar doğrultusunda %94 doğrulukla çalışan Türkiye'nin ilk, tırnak görüntülerinden hastalık tespiti ve olası sistemik hastalık risklerinin öngörülmesi amacıyla kullanılabilecek, klinik ön tanıya destek sağlayan sistemini geliştirilmiştir.
+Bu kodlar doğrultusunda %96 doğrulukla çalışan Türkiye'nin ilk, tırnak görüntülerinden hastalık tespiti ve olası sistemik hastalık risklerinin öngörülmesi amacıyla kullanılabilecek, klinik ön tanıya destek sağlayan sistemi geliştirilmiştir.
